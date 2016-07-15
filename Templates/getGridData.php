@@ -18,8 +18,8 @@
  $total_pages = 0; 
  } if ($page > $total_pages) 
  $page=$total_pages; 
- $start = $limit*$page - $limit; // do not put $limit*($page - 1) 
- $SQL = "SELECT * from employees ORDER BY $sidx $sord LIMIT $start , $limit"; 
+ //$start = $limit*$page - $limit; // do not put $limit*($page - 1) 
+ $SQL = "SELECT * from employees ORDER BY $sidx $sord"; 
  $result = mysql_query( $SQL ) or die("Couldn t execute query.".mysql_error());
  $responce->page = $page;
  $responce->total = $total_pages;

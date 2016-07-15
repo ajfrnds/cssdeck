@@ -13,7 +13,13 @@
 <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
 
 <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js'></script>
+<style>
+.ui-jqgrid .ui-jqgrid-view { font-size: 14px; } /*This id for whole view*/
+.ui-jqgrid .ui-jqgrid-pager { font-size: 18px; }/*This is for bottom navigation*/
+.ui-jqgrid .loading { font-size: 11px; }/*This is for loading icon*/
 
+    
+</style>
 <script>
 var task_link = "http://localhost/cssdeck/dashboard/dashboar.php?Emp_ID=";
 $(document).ready(function () {
@@ -23,7 +29,7 @@ datatype: "json",
 colNames: ["Emp Id", "Emp Name", "Emp Start Date", "Emp End Date" , "Percent", "Status","ACTIONS"],
 colModel: [
 { name: "emp_id",index:"emp_id",editable:true,formatter: formatEmpID},
-{ name: "emp_name",index:"emp_name",editable:true},
+{ name: "emp_name",index:"emp_name",align:"center",editable:true},
 { name: "emp_startDate",index:"emp_startDate",sorttype:'date',edittype:"text",formatter: 'date',formatoptions: { srcformat: 'Y/m/d', newformat: 'm/d/Y'},editable:true,
                  editoptions: {
                             // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
@@ -101,13 +107,7 @@ colModel: [
 editurl: "update.php",
 caption: "Employee Details"
 }); 
-$("#emp_grid").jqGrid('navGrid',"#pemp_grid",{edit:false,del:false,refresh: false, search: false},{
-
-                 closeOnEscape: true,
-                 closeAfterAdd: true,
-                 reloadAfterSubmit: true
-                
-                 } );
+$("#emp_grid").jqGrid('navGrid',"#pemp_grid",{edit:false,del:false,refresh: false, search: false} );
 $("#emp_grid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false, defaultSearch: "cn" });
 });
 function formatEmpID(cellvalue, options, rowObject) {
