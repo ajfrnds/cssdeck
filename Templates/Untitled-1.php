@@ -17,7 +17,7 @@
 .ui-jqgrid .ui-jqgrid-view { font-size: 14px; } /*This id for whole view*/
 .ui-jqgrid .ui-jqgrid-pager { font-size: 18px; }/*This is for bottom navigation*/
 .ui-jqgrid .loading { font-size: 11px; }/*This is for loading icon*/
-
+ tr.jqgrow td { padding: 6px 3px 6px !important; }
     
 </style>
 <script>
@@ -28,9 +28,35 @@ url: "getGridData.php?q=3",
 datatype: "json",
 colNames: ["Emp Id", "Emp Name", "Emp Start Date", "Emp End Date" , "Percent", "Status","ACTIONS"],
 colModel: [
-{ name: "emp_id",index:"emp_id",editable:true,formatter: formatEmpID},
+{ name: "emp_id",index:"emp_id", editable:true,formatter: formatEmpID},
 { name: "emp_name",index:"emp_name",align:"center",editable:true},
-{ name: "emp_startDate",index:"emp_startDate",sorttype:'date',edittype:"text",formatter: 'date',formatoptions: { srcformat: 'Y/m/d', newformat: 'm/d/Y'},editable:true,
+{ name: "emp_startDate",index:"emp_startDate",align:"center", sorttype:'date',edittype:"text",formatter: 'date',formatoptions: { srcformat: 'Y/m/d', newformat: 'm/d/Y'},editable:true,
+                 editoptions: {
+                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+                            // use it to place a third party control to customize the toolbar
+                            dataInit: function (element) {
+                                $(element).datepicker({
+                                    dateFormat: 'mm/dd/yy',
+                                    //minDate: new Date(2010, 0, 1),
+                                    maxDate: new Date(2020, 0, 1),
+                                    showOn: 'focus'
+                                });
+                            }
+                        },
+                        
+   searchoptions: {
+    dataInit: function(elem) {
+        $(elem).datepicker({
+        dateFormat: 'mm/dd/yy',
+        //minDate: new Date(2010, 0, 1),
+        maxDate: new Date(2020, 0, 1),
+        showOn: 'focus'
+        });
+    }
+}
+
+},
+{ name: "emp_endDate",index:"emp_endDate",sorttype:'date', align:"center",edittype:"text",formatter: 'date',formatoptions: { srcformat: 'Y/m/d', newformat: 'm/d/Y'},editable:true,
                  editoptions: {
                             // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
                             // use it to place a third party control to customize the toolbar
@@ -55,34 +81,9 @@ colModel: [
 }
 
 },
-{ name: "emp_endDate",index:"emp_endDate",sorttype:'date',edittype:"text",formatter: 'date',formatoptions: { srcformat: 'Y/m/d', newformat: 'm/d/Y'},editable:true,
-                 editoptions: {
-                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
-                            // use it to place a third party control to customize the toolbar
-                            dataInit: function (element) {
-                                $(element).datepicker({
-                                    dateFormat: 'mm/dd/yy',
-                                    //minDate: new Date(2010, 0, 1),
-                                    maxDate: new Date(2020, 0, 1),
-                                    showOn: 'focus'
-                                });
-                            }
-                        },
-   searchoptions: {
-    dataInit: function(elem) {
-        $(elem).datepicker({
-        dateFormat: 'mm/dd/yy',
-        //minDate: new Date(2010, 0, 1),
-        maxDate: new Date(2020, 0, 1),
-        showOn: 'focus'
-        });
-    }
-}
 
-},
-
-{ name: "percentComplete",index:"percentComplete",editable:true},
-{ name: "emp_status",index:"emp_status",editable:true,edittype:"select",editoptions:{value:"Onboarding:Onboarding;Released:Released"}},
+{ name: "percentComplete",index:"percentComplete",align:"center", editable:true},
+{ name: "emp_status",index:"emp_status",editable:true,align:"center", edittype:"select",editoptions:{value:"Onboarding:Onboarding;Released:Released"}},
 {name:'act',index:'act', width:130,sortable:false}
 ],
  rowNum:10,
@@ -110,6 +111,8 @@ caption: "Employee Details"
 $("#emp_grid").jqGrid('navGrid',"#pemp_grid",{edit:false,del:false,refresh: false, search: false} );
 $("#emp_grid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false, defaultSearch: "cn" });
 });
+
+
 function formatEmpID(cellvalue, options, rowObject) {
             var link = task_link + cellvalue;
             return "<a href='" + link + "' target='_blank'>" + cellvalue + "</a>";
