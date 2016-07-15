@@ -1,0 +1,14 @@
+function formSubmit() {
+    var emailValue = document.getElementById("email").value;
+    var userValue = emailValue.substr(0, emailValue.indexOf('@'));
+
+    Parse.initialize("---KEY---", "---KEY---");
+    var Users = Parse.Object.extend("Users");
+    var users = new Users();
+    users.save({username: userValue}).then(function(object) {
+        alert("Saved user");
+    });
+    users.save({email: emailValue}).then(function(object) {
+        alert("Saved email");
+    });
+}

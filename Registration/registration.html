@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Comcast On-boarding portal</title>
+        
+        <!-- The stylesheet -->
+        <link rel="stylesheet" href="styles.css" />
+        
+	<script src="../javascript/lib/jquery-1.7.2.min.js"></script>
+        
+    <script src='../javascript/registration_javascript.js'></script>
+    <script src='../javascript/reg_form.js'></script>
+       
+</head>
+    
+    <body>
+        <p>&nbsp;</p>
+        
+        <div id="main">
+        	
+       	  <h1>On-boarding Portal</h1>
+        	
+        	<form class="" method="post" action=""  onSubmit="formsubmit">
+        		
+        		<div class="row email">
+	    			<input type="text" id="email" name="email" placeholder="Email" />
+       		  </div>
+        		
+        		<div class="row pass">
+        			<input type="password" id="password1" name="password1" placeholder="Password" />
+        		</div>
+        		
+        		<div class="row pass">
+        			<input type="password" id="password2" name="password2" placeholder="Password (repeat)" disabled="true" />
+        		</div>
+        		
+        		<!-- The rotating arrow -->
+        		<div class="arrowCap"></div>
+        		<div class="arrow"></div>
+        		
+        		<p class="meterText">Password Meter</p>
+        		
+        		<input type="submit" formmethod="POST" value="Register" />
+        		
+       	  </form>
+    </div>
+        
+        <footer></footer>
+        	     
+</body>
+</html>
