@@ -106,6 +106,7 @@ $("#emp_grid").jqGrid('navGrid',"#pemp_grid",{edit:false,del:false,refresh: fals
                  closeOnEscape: true,
                  closeAfterAdd: true,
                  reloadAfterSubmit: true
+                
                  } );
 $("#emp_grid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false, defaultSearch: "cn" });
 });
