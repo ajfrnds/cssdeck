@@ -1,5 +1,6 @@
-This is for jq-grid page
-
 1. More than 10 rows not displaying
 2. Need to include delete button as well
 3. can font me increased for the data inside grid?
+4. Pop up box for adding emoyees shd come in between and shd
+   disappear once employee has been added.
+
