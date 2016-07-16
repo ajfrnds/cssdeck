@@ -5,22 +5,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-
 <link rel='stylesheet' type='text/css' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/sunny/jquery-ui.css' />
 <link rel='stylesheet' type='text/css' href='http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css' />
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js'></script>        
 <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
-
 <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js'></script>
+
 <style>
-.ui-jqgrid .ui-jqgrid-view { font-size: 14px; } /*This id for whole view*/
+.ui-jqgrid .ui-jqgrid-view { font-size: 13px; } /*This id for whole view*/
 .ui-jqgrid .ui-jqgrid-pager { font-size: 18px; }/*This is for bottom navigation*/
 .ui-jqgrid .loading { font-size: 11px; }/*This is for loading icon*/
  tr.jqgrow td { padding: 6px 3px 6px !important; }
-    
 </style>
+
 <script>
+
+
 var task_link = "http://localhost/cssdeck/dashboard/dashboar.php?Emp_ID=";
 $(document).ready(function () {
 $("#emp_grid").jqGrid({
@@ -113,6 +114,8 @@ $("#emp_grid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: fals
 });
 
 
+
+
 function formatEmpID(cellvalue, options, rowObject) {
             var link = task_link + cellvalue;
             return "<a href='" + link + "' target='_blank'>" + cellvalue + "</a>";
@@ -122,10 +125,12 @@ function formatEmpID(cellvalue, options, rowObject) {
 </head>
 <body>	
 
-<img src="animation.gif" width="1500" height="100" alt=""/>
-<div align="center">    
-  <table id="emp_grid"><tr><td></td></tr></table> 
-<div id="pemp_grid"></div>
+<img src="animation.gif" width="1500" height="100" alt="Comcast"/>
+<div align="center">
+  <table id="emp_grid">
+  <tr><td></td></tr></table> 
+  <p>&nbsp;</p>
+  <div id="pemp_grid"></div>
 </div>
 </body>
 
